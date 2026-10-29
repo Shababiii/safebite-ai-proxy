@@ -80,7 +80,6 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         model: process.env.GEMINI_EXTRACT_MODEL || "gemini-2.5-flash",
         temperature: 0,
-        reasoning_effort: "none",
         response_format: {
           type: "json_schema",
           json_schema: {
