@@ -120,6 +120,7 @@ module.exports = async function handler(req, res) {
       })
     });
     const data = await response.json().catch(() => null);
+       if (!response.ok) console.error("GEMINI_ERROR", response.status, JSON.stringify(data));
     if (response.status === 429) {
       res.setHeader("Retry-After", response.headers?.get("retry-after") || "60");
       return res.status(429).json({ error: "The free AI allowance is temporarily exhausted. Wait before retrying; if the daily limit was reached, try after midnight Pacific time." });
